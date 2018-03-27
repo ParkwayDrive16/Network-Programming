@@ -36,5 +36,5 @@ class TCPServer{
 	clientSocket2.close();
 	communicationSocket.close();
 	checksumSocket.close();
-	} 
+	}
 }

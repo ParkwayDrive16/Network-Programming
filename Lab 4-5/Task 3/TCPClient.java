@@ -1,8 +1,12 @@
 import java.io.*;
 import java.net.*;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 
 class TCPClient{
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args) throws IOException, NoSuchAlgorithmException{
 
 	String serverHostname = new String ("127.0.0.1");
 	int textPort = 10007;
@@ -26,6 +30,7 @@ class TCPClient{
 		outText.println(userInput);
 		outChSum.println("checksum would be here");
 		System.out.println("echo: " + inText.readLine());
+		System.out.println(getHash(userInput));
 	}
 
 	outText.close();
@@ -34,5 +39,13 @@ class TCPClient{
 	stdIn.close();
 	textSocket.close();
 	checksumSocket.close();
+	}
+
+	public static String getHash(String text) throws NoSuchAlgorithmException{
+		// MessageDigest md = MessageDigest.getInstance("MD5");
+		// md.update(text.getBytes());
+		// byte[] digest = md.digest();
+		// String myHash = Base64.getEncoder().encodeToString(digest);
+		// return myHash;
 	}
 }
