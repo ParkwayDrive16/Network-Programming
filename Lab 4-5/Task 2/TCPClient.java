@@ -7,11 +7,11 @@ class TCPClient{
 	String serverHostname = new String ("127.0.0.1");
 	int serverPort = 10007; 
 	Socket echoSocket = null;
-	PrintWriter out = null;
+	PrintStream out = null;
 	BufferedReader in = null;
 
 	echoSocket = new Socket(serverHostname, serverPort);
-	out = new PrintWriter(echoSocket.getOutputStream(), true);
+	out = new PrintStream(echoSocket.getOutputStream(), true);
 	in = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
 	BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
 	String userInput;
