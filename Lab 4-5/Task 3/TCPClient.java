@@ -1,12 +1,11 @@
 import java.io.*;
 import java.net.*;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
+import java.util.zip.Adler32;
+import java.util.zip.CheckedInputStream;
+import java.util.zip.CheckedOutputStream;
 
 class TCPClient{
-	public static void main(String[] args) throws IOException, NoSuchAlgorithmException{
+	public static void main(String[] args) throws IOException{
 
 	String serverHostname = new String ("127.0.0.1");
 	int textPort = 10007;
@@ -21,31 +20,29 @@ class TCPClient{
 	checksumSocket = new Socket(serverHostname, checksumPort);
 	outText = new PrintStream(textSocket.getOutputStream(), true);
 	outChSum = new PrintStream(checksumSocket.getOutputStream(), true);
+	CheckedOutputStream csum = new CheckedOutputStream(outText, new Adler32());
 	inText = new BufferedReader(new InputStreamReader(textSocket.getInputStream()));
 
 	BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
 	String userInput;
 
 	while ((userInput = stdIn.readLine()) != null) {
-		outText.println(userInput);
-		outChSum.println("checksum would be here");
+		userInput += "\n";
+		byte[] b = userInput.getBytes();
+		csum.write(b);
+		csum.flush();
+
+		outChSum.println(csum.getChecksum().getValue());
 		System.out.println("echo: " + inText.readLine());
-		System.out.println(getHash(userInput));
+		csum.getChecksum().reset();
 	}
 
+	csum.close();
 	outText.close();
 	outChSum.close();
 	inText.close();
 	stdIn.close();
 	textSocket.close();
 	checksumSocket.close();
-	}
-
-	public static String getHash(String text) throws NoSuchAlgorithmException{
-		// MessageDigest md = MessageDigest.getInstance("MD5");
-		// md.update(text.getBytes());
-		// byte[] digest = md.digest();
-		// String myHash = Base64.getEncoder().encodeToString(digest);
-		// return myHash;
 	}
 }
