@@ -7,8 +7,8 @@ import java.util.zip.CheckedOutputStream;
 class TCPServer{
 	public static void main(String[] args) throws IOException{
 
-		int textPort = 10007;
-		int checksumPort = 20008;
+		int textPort = 19609;
+		int checksumPort = 29609;
 		ServerSocket communicationSocket = null;
 		ServerSocket checksumSocket = null;
 		Socket clientSocket = null;

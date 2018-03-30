@@ -5,7 +5,7 @@ class TCPServer{
 	public static void main(String[] args) throws IOException{
 		//creating sockets, streams and buffered reader
 		ServerSocket serverSocket = null; 
-		int serverPort = 10007;
+		int serverPort = 19609;
 		serverSocket = new ServerSocket(serverPort); 
 		Socket clientSocket = null; 
 		clientSocket = serverSocket.accept(); 

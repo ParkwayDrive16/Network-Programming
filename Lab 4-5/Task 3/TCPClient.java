@@ -7,9 +7,9 @@ import java.util.zip.CheckedOutputStream;
 class TCPClient{
 	public static void main(String[] args) throws IOException{
 
-		String serverHostname = new String ("127.0.0.1");
-		int textPort = 10007;
-		int checksumPort = 20008;
+		String serverHostname = new String ("m1-c13n1.csit.rmit.edu.au");
+		int textPort = 19609;
+		int checksumPort = 29609;
 		Socket textSocket = null;
 		Socket checksumSocket = null;
 		PrintStream outText = null;
@@ -38,6 +38,7 @@ class TCPClient{
 			outChSum.println(csum.getChecksum().getValue());
 			//prints the received message from the server
 			System.out.println("echo: " + inText.readLine());
+			if ((userInput.trim()).equals("X")) break;
 			//resets the checksum after all operations
 			csum.getChecksum().reset();
 		}

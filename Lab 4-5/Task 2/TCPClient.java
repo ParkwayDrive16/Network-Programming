@@ -4,8 +4,8 @@ import java.net.*;
 class TCPClient{
 	public static void main(String[] args) throws IOException{
 		//creating sockets, streams and buffered reader
-		String serverHostname = new String ("127.0.0.1");
-		int serverPort = 10007; 
+		String serverHostname = new String ("m1-c13n1.csit.rmit.edu.au");
+		int serverPort = 19609; 
 		Socket echoSocket = null;
 		PrintStream out = null;
 		BufferedReader in = null;
@@ -21,6 +21,7 @@ class TCPClient{
 			out.println(userInput);
 			//displays the line read
 			System.out.println("echo: " + in.readLine());
+			if (userInput.equals("X")) break;
 		}
 		//closing all streams and sockets
 		out.close();
