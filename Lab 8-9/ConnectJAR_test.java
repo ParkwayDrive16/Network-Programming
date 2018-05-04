@@ -11,7 +11,8 @@ public class ConnectJAR_test {
     String jarString = "jar:";
     String httpString = "http://";
     String host = "m1-c45n1.csit.rmit.edu.au";
-    String filePath = "/~Course/HelloWorld.jar!/";
+    String filePath = "/~Course/";
+    String fileName = "HelloWorld.jar!/";
     StringBuilder sb = new StringBuilder(host);
     //try block in case any exceptions occur
     try {
@@ -23,6 +24,7 @@ public class ConnectJAR_test {
       sb.insert(0, httpString);
       sb.insert(0, jarString);
       sb.append(filePath);
+      sb.append(fileName);
       System.out.println(sb.toString());
 
       //creating url from the string builder (converted to a String first)

@@ -2,17 +2,20 @@ import java.net.*;
 import java.io.*;
 
 public class ConnectURL_test {
+
   public static void main(String[] args){
     URL url = null;
     String httpString = "http://";
     String host = "m1-c45n1.csit.rmit.edu.au";
-    String filePath = "/~Course/index.php";
+    String filePath = "/~Course/";
+    String fileName = "index.php";
     StringBuilder sb = new StringBuilder();
     try {
       //try block creating URL from the string given
       sb.append(httpString);
       sb.append(host);
       sb.append(filePath);
+      sb.append(fileName);
       url = new URL(sb.toString());
     } catch (MalformedURLException e) {
       //message in case try block has failed
@@ -44,8 +47,6 @@ public class ConnectURL_test {
           //print the content to the screen
           System.out.print((char) data);
         }
-        //notify the user that end of the stream is reached
-        System.out.println("\nInputStreamEnd");
       }
       //closing input stream
       input.close();
