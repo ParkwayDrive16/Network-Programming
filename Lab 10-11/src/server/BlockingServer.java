@@ -10,7 +10,7 @@ import util.Util;
 public class BlockingServer {
   
   public void mainBlocking() throws Exception {
-    final int SERVER_PORT = 1212;
+    final int SERVER_PORT = 19609;
   
     try{
       //printing the port number

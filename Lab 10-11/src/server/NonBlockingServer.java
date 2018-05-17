@@ -11,7 +11,7 @@ import java.util.Iterator;
 import util.Util;
 
 public class NonBlockingServer {
-  final int SERVER_PORT = 1212;
+  final int SERVER_PORT = 19609;
   public void mainNonBlocking() throws Exception {
     try{
       System.out.println("Listening on " + SERVER_PORT);

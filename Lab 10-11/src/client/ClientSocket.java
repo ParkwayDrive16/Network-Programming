@@ -11,8 +11,8 @@ import util.Util;
 
 public class ClientSocket
 {
-  final int SERVER_PORT = 1212;
-  final String SERVER_ADDR = "localhost";
+  final int SERVER_PORT = 19609;
+  final String SERVER_ADDR = "m1-c13n1.csit.rmit.edu.au";
   
   public void mainClient(){
     try{
