@@ -74,7 +74,7 @@ public class GameThread implements Runnable {
       } else 
         connection.sendBoolean(false);
       
-      logger.logComms("Number of players and game size is sent to ", client);;
+      logger.logComms("Number of players and game size is sent to " + playerName, client);;
       connection.sendInt(pmanager.getNumOfPlayers());
       connection.sendInt(game.getSize());
      
@@ -123,7 +123,6 @@ public class GameThread implements Runnable {
       logger.logComms("Sending results to all the players");
       for (SingleResult sr : pmanager.getResults()) {
         connection.sendString(sr.getPlayerName() + (sr.isCorrect ? " guessed " : "didn't guess ") + "the number and used " + sr.getNumOfGuesses() + " guesses.");
-        System.out.println(sr.getPlayerName() + (sr.isCorrect ? " guessed " : " didn't guess ") + "the number and used " + sr.getNumOfGuesses() + " guesses.");
       }
       logger.logGame("Revealing secret number : " + game.getNumbers());
       connection.sendString("Secret number is " + game.getNumbers());

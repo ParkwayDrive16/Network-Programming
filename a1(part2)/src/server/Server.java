@@ -25,11 +25,11 @@ public class Server {
     //starting game manager
     gameManager.start();
     
+    logger.logComms("Server started and listening on port : " + SERVER_PORT);
     try (ServerSocket serverSocket = new ServerSocket(SERVER_PORT)){
       while (true)
       {
         //each new client connection starts new game thread
-        logger.logComms("Server started and listening on port : " + SERVER_PORT);
         executor.execute(new GameThread(serverSocket.accept(), pmanager));
       }
     }catch (IOException e)

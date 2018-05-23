@@ -18,7 +18,7 @@ public class GameManager implements Runnable{
   public void run() {
     while (true) {
       try {
-        logger.logGame("Game created. Waiting for players to connect.");
+//        logger.logGame("Game created. Waiting for players to connect.");
         pmanager.getStartCount().await();
         logger.logGame("Player connected, waiting 20 second on other possible players");
         pmanager.getStartGame().await(WAIT_TIME, TimeUnit.SECONDS);
